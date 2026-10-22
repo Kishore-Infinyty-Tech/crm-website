@@ -1,0 +1,6 @@
+Company,Contact Name,Job Title,Phone,Email,Website,Industry,Location,Requirement,Budget,Priority,Source
+GreenLeaf Organics,Vikram Shah,Founder,+91 98200 11122,vikram@greenleaf-organics.test,https://greenleaf-organics.test,Food & Beverage,Pune,Online store with subscription boxes,300000,medium,excel
+UrbanNest Realty,Pooja Nair,Sales Head,+91 98450 33344,pooja@urbannest-realty.test,https://urbannest-realty.test,Real Estate,Hyderabad,Property listing portal with lead capture,450000,high,excel
+Acme Traders Duplicate,Rohan Mehta,Owner,+91 98765 43210,,,,,Same phone as lead 1 - must be skipped,,low,excel
+,Nobody,,+91 90000 00000,,,,,Row with no company - must be skipped,,low,excel
+Phoneless Co,Test Person,,,,,,,Row with no phone or email - must be skipped,,low,excel

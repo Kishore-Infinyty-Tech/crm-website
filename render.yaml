@@ -1,0 +1,40 @@
+# Render blueprint: deploys the Django API (backend folder) as a web service.
+# Render dashboard -> New -> Blueprint -> pick this repo. Fill the variables marked sync: false.
+services:
+  - type: web
+    name: infinyty-crm-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    healthCheckPath: /api/auth/me
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DEBUG
+        value: "0"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: ALLOWED_HOSTS
+        sync: false          # for example: infinyty-crm-api.onrender.com
+      - key: APP_URL
+        sync: false          # your Vercel address, for example https://infinyty-crm.vercel.app
+      - key: CRON_SECRET
+        generateValue: true
+      - key: BREVO_SMTP_USER
+        sync: false
+      - key: BREVO_SMTP_KEY
+        sync: false
+      - key: DEFAULT_FROM_EMAIL
+        sync: false
+      - key: B2_ENDPOINT
+        sync: false
+      - key: B2_KEY_ID
+        sync: false
+      - key: B2_APP_KEY
+        sync: false
+      - key: B2_BUCKET
+        sync: false

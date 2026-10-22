@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Infinyty design tokens. The blue and gold come from the logo.
+   Overriding Tailwind's "indigo" and "slate" scales re-colours the
+   whole app in one place.
+------------------------------------------------------------------- */
+@theme {
+  --color-indigo-50: #eef5ff;
+  --color-indigo-100: #dbe9ff;
+  --color-indigo-200: #bcd6ff;
+  --color-indigo-300: #8dbaff;
+  --color-indigo-400: #5b97ff;
+  --color-indigo-500: #2f73f5;
+  --color-indigo-600: #1558e0;
+  --color-indigo-700: #1146b8;
+  --color-indigo-800: #12398f;
+  --color-indigo-900: #0e2a6b;
+  --color-indigo-950: #091845;
+
+  --color-slate-50: #f5f8fe;
+  --color-slate-100: #eaf0fb;
+  --color-slate-200: #d9e2f3;
+  --color-slate-300: #bccbe4;
+  --color-slate-400: #8a9dc2;
+  --color-slate-500: #62759b;
+  --color-slate-600: #46577d;
+  --color-slate-700: #2f3d62;
+  --color-slate-800: #1b2850;
+  --color-slate-900: #0f1a3d;
+  --color-slate-950: #080f2a;
+
+  --color-gold-300: #ffd37a;
+  --color-gold-400: #fbbf3a;
+  --color-gold-500: #f4a90a;
+  --color-gold-600: #d98a00;
+
+  --color-cyan-glow: #19b5ff;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-glow: 0 10px 40px -10px rgb(21 88 224 / 0.55);
+  --shadow-card: 0 1px 2px rgb(15 26 61 / 0.04), 0 12px 32px -12px rgb(15 26 61 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(15 26 61 / 0.05), 0 24px 48px -16px rgb(21 88 224 / 0.28);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.6s ease both;
+  --animate-scale-in: scale-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  --animate-slide-in: slide-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-float: float-y 7s ease-in-out infinite;
+  --animate-float-slow: float-y 11s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  --animate-pulse-glow: pulse-glow 2.6s ease-in-out infinite;
+  --animate-pan: gradient-pan 14s ease-in-out infinite;
+  --animate-spin-slow: spin 24s linear infinite;
+  --animate-blob: blob 22s ease-in-out infinite;
+  --animate-draw: draw 2.2s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgb(47 115 245 / 0.35); }
+    50% { box-shadow: 0 0 0 10px rgb(47 115 245 / 0); }
+  }
+  @keyframes gradient-pan {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.08); }
+    66% { transform: translate(-30px, 30px) scale(0.94); }
+  }
+  @keyframes draw {
+    0% { stroke-dashoffset: 400; }
+    60%, 100% { stroke-dashoffset: 0; }
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-9px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* last line of defence: a stray wide element must never make the whole page scroll sideways */
+html, body {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-slate-900);
+  background: var(--color-slate-50);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+::selection {
+  background: rgb(47 115 245 / 0.25);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-indigo-500);
+  outline-offset: 2px;
+}
+
+/* form fields draw their own soft glow ring, so they never get the square browser outline */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+/* slim, tinted scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-slate-300) transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-slate-300); border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-slate-400); background-clip: content-box; border: 2px solid transparent; }
+
+/* ---------- reusable surfaces ---------- */
+.glass {
+  background: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-strong {
+  background: rgb(255 255 255 / 0.86);
+  backdrop-filter: blur(26px) saturate(1.5);
+  -webkit-backdrop-filter: blur(26px) saturate(1.5);
+  border: 1px solid rgb(255 255 255 / 0.8);
+  box-shadow: var(--shadow-lift);
+}
+
+/* sign-in card: frosted white with a thin gradient border that slowly travels around it */
+@property --auth-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes auth-spin {
+  to { --auth-angle: 360deg; }
+}
+.auth-card {
+  position: relative;
+  border-radius: 2rem;
+  background: rgb(255 255 255 / 0.93);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: 0 50px 100px -40px rgb(14 42 107 / 0.45), 0 2px 0 rgb(255 255 255 / 0.9) inset;
+}
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--auth-angle), rgb(21 88 224 / 0.95), rgb(25 181 255 / 0.65), rgb(244 169 10 / 0.85), rgb(21 88 224 / 0.95));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: auth-spin 8s linear infinite;
+  pointer-events: none;
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #0e2a6b 0%, #1558e0 45%, #19b5ff 75%, #f4a90a 110%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 10s ease-in-out infinite;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #1558e0 0%, #2f73f5 55%, #19b5ff 100%);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #091845 0%, #0e2a6b 50%, #1558e0 120%);
+}
+
+/* soft moving colour behind every screen */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgb(25 181 255 / 0.18), transparent 60%),
+    radial-gradient(900px 600px at -10% 20%, rgb(21 88 224 / 0.14), transparent 60%),
+    radial-gradient(800px 500px at 60% 110%, rgb(244 169 10 / 0.10), transparent 60%),
+    linear-gradient(180deg, #f7faff 0%, #eef4fd 100%);
+}
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  animation: blob 22s ease-in-out infinite;
+}
+.aurora::before { background: #5b97ff; top: 8%; left: 55%; }
+.aurora::after { background: #ffd37a; bottom: -8%; left: 10%; opacity: 0.28; animation-delay: -9s; }
+
+/* a faint dotted grid, like the pixel trail in the logo */
+.dot-grid {
+  background-image: radial-gradient(rgb(21 88 224 / 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, rgb(15 26 61 / 0.05) 25%, rgb(15 26 61 / 0.11) 37%, rgb(15 26 61 / 0.05) 63%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+.page-enter {
+  animation: fade-up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* children appear one after another */
+.stagger > * {
+  animation: fade-up 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.03s; }
+.stagger > *:nth-child(2) { animation-delay: 0.09s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.21s; }
+.stagger > *:nth-child(5) { animation-delay: 0.27s; }
+.stagger > *:nth-child(6) { animation-delay: 0.33s; }
+.stagger > *:nth-child(7) { animation-delay: 0.39s; }
+.stagger > *:nth-child(8) { animation-delay: 0.45s; }
+.stagger > *:nth-child(n + 9) { animation-delay: 0.5s; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
