@@ -24,17 +24,6 @@ services:
         sync: false          # your Vercel address, for example https://infinyty-crm.vercel.app
       - key: CRON_SECRET
         generateValue: true
-      - key: BREVO_SMTP_USER
-        sync: false
-      - key: BREVO_SMTP_KEY
-        sync: false
-      - key: DEFAULT_FROM_EMAIL
-        sync: false
-      - key: B2_ENDPOINT
-        sync: false
-      - key: B2_KEY_ID
-        sync: false
-      - key: B2_APP_KEY
-        sync: false
-      - key: B2_BUCKET
-        sync: false
+      # Add later in the Render dashboard (Environment tab) when you connect them:
+      #   BREVO_SMTP_USER, BREVO_SMTP_KEY, DEFAULT_FROM_EMAIL   (real emails)
+      #   B2_ENDPOINT, B2_KEY_ID, B2_APP_KEY, B2_BUCKET         (Backblaze file storage)
