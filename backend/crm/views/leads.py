@@ -224,7 +224,7 @@ def lead_detail(request, lead_id):
                 convert={"estimated_budget": to_num, "deal_value": to_num, "source_id": to_int, "primary_contact_id": to_int},
             )
             if "assigned_to" in data and to_int(data["assigned_to"], "assigned to") != lead["assigned_to"]:
-                if user["role"] == "business_development":
+                if user["role"] == "business_development_executive":
                     raise ApiError("Only CRM Administrators and the Technical Analyst can reassign leads", 403)
                 sets.append("assigned_to = %s")
                 params.append(to_int(data["assigned_to"], "assigned to"))

@@ -53,7 +53,7 @@ The first-time password is `INITIAL_PASSWORD` in `backend/crm/management/command
 ## What is built
 
 - **Leads**: list with search and filters, kanban board (drag a card to change stage), add, edit, duplicate check by phone and email, delete (CRM Administrators).
-- **Stage changes** write history, set closed dates, require a lost reason, and **hand the lead over** to the role that owns the new stage (new lead = Business Development, reaching out and qualified = CRM Administrator, prototype and quotation = Technical Analyst, negotiation = CRM Administrator). The new owner gets an email.
+- **Stage changes** write history, set closed dates, require a lost reason, and **hand the lead over** to the role that owns the new stage (new lead = Business Development Executive, reaching out and qualified = CRM Administrator, prototype and quotation = Technical Analyst, negotiation = CRM Administrator). The new owner gets an email.
 - **Lead page**: contacts, call and message log, follow-ups, requirements (tech stack and features), prototype rounds with client feedback, meetings, files, stage history.
 - **Follow-ups**: per person, grouped overdue, today and upcoming. Reminder emails go out about 30 minutes before they are due.
 - **Calendar**: month view, one-off and repeating meetings ("every 2 days, 5 times"), attendees, emailed calendar invites (.ics).

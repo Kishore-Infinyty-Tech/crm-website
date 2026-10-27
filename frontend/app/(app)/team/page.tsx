@@ -13,19 +13,19 @@ import { Badge, Button, Card, ErrorNote, Field, Input, Modal, PageHeader, Select
 const ROLE_STYLE: Record<string, { badge: string; icon: typeof ShieldCheck }> = {
   admin: { badge: "bg-indigo-50 text-indigo-700 ring-indigo-200", icon: ShieldCheck },
   technical_analyst: { badge: "bg-amber-50 text-amber-700 ring-amber-200", icon: BarChart3 },
-  business_development: { badge: "bg-slate-100 text-slate-700 ring-slate-200", icon: Wrench },
+  business_development_executive: { badge: "bg-slate-100 text-slate-700 ring-slate-200", icon: Wrench },
 };
 
-const PERMISSIONS: { what: string; admin: boolean; technical_analyst: boolean; business_development: boolean }[] = [
-  { what: "See every lead", admin: true, technical_analyst: false, business_development: false },
-  { what: "See leads from the prototype stage onward", admin: true, technical_analyst: true, business_development: false },
-  { what: "See leads they added or own", admin: true, technical_analyst: true, business_development: true },
-  { what: "Add, import and edit leads", admin: true, technical_analyst: true, business_development: true },
-  { what: "Log calls, follow-ups and meetings", admin: true, technical_analyst: true, business_development: true },
-  { what: "Reassign a lead to someone else", admin: true, technical_analyst: true, business_development: false },
-  { what: "Delete a lead", admin: true, technical_analyst: false, business_development: false },
-  { what: "Open the dashboard", admin: true, technical_analyst: false, business_development: false },
-  { what: "Manage team members and settings", admin: true, technical_analyst: false, business_development: false },
+const PERMISSIONS: { what: string; admin: boolean; technical_analyst: boolean; business_development_executive: boolean }[] = [
+  { what: "See every lead", admin: true, technical_analyst: false, business_development_executive: false },
+  { what: "See leads from the prototype stage onward", admin: true, technical_analyst: true, business_development_executive: false },
+  { what: "See leads they added or own", admin: true, technical_analyst: true, business_development_executive: true },
+  { what: "Add, import and edit leads", admin: true, technical_analyst: true, business_development_executive: true },
+  { what: "Log calls, follow-ups and meetings", admin: true, technical_analyst: true, business_development_executive: true },
+  { what: "Reassign a lead to someone else", admin: true, technical_analyst: true, business_development_executive: false },
+  { what: "Delete a lead", admin: true, technical_analyst: false, business_development_executive: false },
+  { what: "Open the dashboard", admin: true, technical_analyst: false, business_development_executive: false },
+  { what: "Manage team members and settings", admin: true, technical_analyst: false, business_development_executive: false },
 ];
 
 function UserModal({ target, onClose, onSaved }: { target: User | "new" | null; onClose: () => void; onSaved: () => void }) {
@@ -42,7 +42,7 @@ function UserModal({ target, onClose, onSaved }: { target: User | "new" | null; 
     setError("");
     setForm(editing
       ? { email: editing.email ?? "", full_name: editing.full_name, phone: editing.phone ?? "", role_id: String(editing.role_id), password: "", is_active: editing.is_active }
-      : { email: "", full_name: "", phone: "", role_id: String(lookups?.roles.find((r) => r.name === "business_development")?.id ?? ""), password: "", is_active: true });
+      : { email: "", full_name: "", phone: "", role_id: String(lookups?.roles.find((r) => r.name === "business_development_executive")?.id ?? ""), password: "", is_active: true });
   }, [target, editing, lookups]);
 
   async function save() {
@@ -111,7 +111,7 @@ export default function TeamPage() {
 
       <div className="stagger mb-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {users.map((u) => {
-          const style = ROLE_STYLE[u.role] ?? ROLE_STYLE.business_development;
+          const style = ROLE_STYLE[u.role] ?? ROLE_STYLE.business_development_executive;
           return (
             <article key={u.id} className={`glass hover-lift group relative overflow-hidden rounded-3xl p-6 ${u.is_active ? "" : "opacity-60"}`}>
               <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-indigo-400/20 to-cyan-glow/10 blur-2xl transition-transform duration-500 group-hover:scale-125" />
@@ -139,14 +139,14 @@ export default function TeamPage() {
             <thead className="border-b border-slate-200/70 text-xs font-bold uppercase tracking-wider text-slate-400">
               <tr>
                 <th className="px-6 py-3.5">Permission</th>
-                {(["admin", "technical_analyst", "business_development"] as const).map((r) => <th key={r} className="px-4 py-3.5 text-center">{roleLabel(r)}</th>)}
+                {(["admin", "technical_analyst", "business_development_executive"] as const).map((r) => <th key={r} className="px-4 py-3.5 text-center">{roleLabel(r)}</th>)}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {PERMISSIONS.map((p) => (
                 <tr key={p.what} className="transition-colors hover:bg-indigo-50/40">
                   <td className="px-6 py-3 font-medium text-slate-700">{p.what}</td>
-                  {(["admin", "technical_analyst", "business_development"] as const).map((r) => (
+                  {(["admin", "technical_analyst", "business_development_executive"] as const).map((r) => (
                     <td key={r} className="px-4 py-3 text-center">
                       {p[r] ? <span className="inline-grid h-6 w-6 place-items-center rounded-full bg-emerald-50 text-emerald-600"><Check className="h-3.5 w-3.5" /></span> : <Minus className="mx-auto h-4 w-4 text-slate-300" />}
                     </td>

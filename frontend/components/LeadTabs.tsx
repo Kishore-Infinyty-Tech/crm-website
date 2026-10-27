@@ -353,7 +353,7 @@ export function RevisionsTab({ lead, onChange }: { lead: LeadDetail; onChange: (
   const [error, setError] = useState("");
 
   const revisions = data?.revisions ?? [];
-  const staff = users.filter((u) => u.is_active && u.role !== "business_development");
+  const staff = users.filter((u) => u.is_active && u.role !== "business_development_executive");
 
   async function run(fn: () => Promise<unknown>, message: string) {
     setError("");

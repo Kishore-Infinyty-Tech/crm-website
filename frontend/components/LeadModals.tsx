@@ -109,7 +109,7 @@ export function AddLeadModal({ open, onClose, onCreated }: { open: boolean; onCl
 export function EditLeadModal({ lead, open, onClose, onSaved }: { lead: LeadDetail; open: boolean; onClose: () => void; onSaved: () => void }) {
   const { lookups, users } = useData();
   const { user } = useAuth();
-  const canReassign = user?.role !== "business_development";
+  const canReassign = user?.role !== "business_development_executive";
   const toast = useToast();
   const [form, setForm] = useState({ company_name: "", website: "", industry: "", location: "", project_summary: "", estimated_budget: "", priority: "", source_id: "", assigned_to: "" });
   const [error, setError] = useState("");

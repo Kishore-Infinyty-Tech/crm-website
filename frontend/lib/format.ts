@@ -63,10 +63,10 @@ export const PRIORITY_COLORS: Record<string, string> = {
 
 export const cap = (s?: string | null) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : "");
 
-/** How a role is shown to people. The short keys (admin, technical_analyst, business_development) never appear on screen. */
+/** How a role is shown to people. The short keys (admin, technical_analyst, business_development_executive) never appear on screen. */
 export const ROLE_LABELS: Record<string, string> = {
   admin: "CRM Administrator",
   technical_analyst: "Technical Analyst",
-  business_development: "Business Development",
+  business_development_executive: "Business Development Executive",
 };
 export const roleLabel = (role?: string | null) => (role ? ROLE_LABELS[role] ?? cap(role) : "");

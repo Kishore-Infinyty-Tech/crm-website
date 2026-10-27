@@ -157,7 +157,7 @@ export default function DashboardPage() {
               { n: 1, title: "Add your first lead", text: "Enter one by hand or import a sheet.", href: "/import", cta: "Add a lead", tone: "from-indigo-600 to-cyan-glow" },
               { n: 2, title: "Log a call", text: "Open the lead and record what was said.", href: "/leads", cta: "Open leads", tone: "from-emerald-600 to-emerald-300" },
               { n: 3, title: "Set a follow-up", text: "So no lead ever goes quiet.", href: "/follow-ups", cta: "See follow-ups", tone: "from-gold-500 to-gold-300" },
-              { n: 4, title: "Invite the team", text: "Add Business Development members and a Technical Analyst.", href: "/team", cta: "Open team", tone: "from-violet-600 to-violet-400" },
+              { n: 4, title: "Invite the team", text: "Add Business Development Executives and a Technical Analyst.", href: "/team", cta: "Open team", tone: "from-violet-600 to-violet-400" },
             ].map((s) => (
               <li key={s.n} className="hover-lift rounded-2xl bg-white p-5 ring-1 ring-slate-200/70">
                 <span className={`grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br ${s.tone} text-sm font-bold text-white shadow-md`}>{s.n}</span>

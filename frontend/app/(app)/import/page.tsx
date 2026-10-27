@@ -48,7 +48,7 @@ function ManualForm() {
   const [saving, setSaving] = useState<"" | "open" | "another">("");
   const first = useRef<HTMLInputElement>(null);
   const set = (k: keyof typeof blank) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setForm((f) => ({ ...f, [k]: e.target.value }));
-  const canAssign = user?.role !== "business_development";
+  const canAssign = user?.role !== "business_development_executive";
 
   async function save(next: "open" | "another", force = false) {
     setSaving(next);

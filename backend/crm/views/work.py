@@ -266,8 +266,8 @@ def revision_item(request, revision_id):
         raise ApiError("Round not found", 404)
     get_lead(user, row["lead_id"])
     if request.method == "DELETE":
-        if user["role"] == "business_development":
-            raise ApiError("Business Development cannot delete rounds", 403)
+        if user["role"] == "business_development_executive":
+            raise ApiError("Business Development Executives cannot delete rounds", 403)
         execute("DELETE FROM prototype_revisions WHERE id = %s", [revision_id])
         return ok()
     data = request.json
