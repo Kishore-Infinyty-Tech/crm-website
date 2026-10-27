@@ -353,7 +353,7 @@ export function RevisionsTab({ lead, onChange }: { lead: LeadDetail; onChange: (
   const [error, setError] = useState("");
 
   const revisions = data?.revisions ?? [];
-  const staff = users.filter((u) => u.is_active && u.role !== "executive");
+  const staff = users.filter((u) => u.is_active && u.role !== "business_development");
 
   async function run(fn: () => Promise<unknown>, message: string) {
     setError("");
@@ -409,7 +409,7 @@ export function RevisionsTab({ lead, onChange }: { lead: LeadDetail; onChange: (
             </div>
             <div className="flex flex-wrap items-center justify-end gap-3 border-t border-slate-100 pt-5">
               <Button variant="secondary" onClick={() => setAdding(false)}>Cancel</Button>
-              <Button onClick={() => run(async () => { await api.post(`/leads/${lead.id}/revisions`, { ...form, assigned_to: form.assigned_to || (user?.role === "analyst" ? user.id : null), type_id: form.type_id || null }); setAdding(false); setForm({ description: "", deadline: "", assigned_to: "", prototype_link: "", type_id: "" }); }, "Round added")}>Add round</Button>
+              <Button onClick={() => run(async () => { await api.post(`/leads/${lead.id}/revisions`, { ...form, assigned_to: form.assigned_to || (user?.role === "technical_analyst" ? user.id : null), type_id: form.type_id || null }); setAdding(false); setForm({ description: "", deadline: "", assigned_to: "", prototype_link: "", type_id: "" }); }, "Round added")}>Add round</Button>
             </div>
           </div>
         </div>

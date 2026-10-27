@@ -14,10 +14,10 @@ import { Avatar, BrandLoader } from "./fx/effects";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, roles: ["admin"] },
-  { href: "/leads", label: "Leads", icon: Target, roles: ["admin", "analyst", "executive"] },
-  { href: "/follow-ups", label: "Follow-ups", icon: BellRing, roles: ["admin", "analyst", "executive"] },
-  { href: "/calendar", label: "Calendar", icon: CalendarDays, roles: ["admin", "analyst", "executive"] },
-  { href: "/import", label: "Add leads", icon: FileUp, roles: ["admin", "analyst", "executive"] },
+  { href: "/leads", label: "Leads", icon: Target, roles: ["admin", "technical_analyst", "business_development"] },
+  { href: "/follow-ups", label: "Follow-ups", icon: BellRing, roles: ["admin", "technical_analyst", "business_development"] },
+  { href: "/calendar", label: "Calendar", icon: CalendarDays, roles: ["admin", "technical_analyst", "business_development"] },
+  { href: "/import", label: "Add leads", icon: FileUp, roles: ["admin", "technical_analyst", "business_development"] },
   { href: "/team", label: "Team", icon: Users, roles: ["admin"] },
   { href: "/settings", label: "Settings", icon: SlidersHorizontal, roles: ["admin"] },
 ];

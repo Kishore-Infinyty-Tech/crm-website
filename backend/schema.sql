@@ -382,18 +382,18 @@ END $$;
 -- ===============================================================
 -- SEED DATA FOR LOOKUP TABLES
 -- ===============================================================
-INSERT INTO roles (name) VALUES ('admin'), ('analyst'), ('executive')
+INSERT INTO roles (name) VALUES ('admin'), ('technical_analyst'), ('business_development')
 ON CONFLICT (name) DO NOTHING;
 
 INSERT INTO lead_sources (name) VALUES ('call'), ('whatsapp'), ('excel'), ('manual'), ('other')
 ON CONFLICT (name) DO NOTHING;
 
 INSERT INTO pipeline_stages (name, position, owner_role) VALUES
-    ('new lead',     1, (SELECT id FROM roles WHERE name = 'executive')),
+    ('new lead',     1, (SELECT id FROM roles WHERE name = 'business_development')),
     ('reaching out', 2, (SELECT id FROM roles WHERE name = 'admin')),
     ('qualified',    3, (SELECT id FROM roles WHERE name = 'admin')),
-    ('prototype',    4, (SELECT id FROM roles WHERE name = 'analyst')),
-    ('quotation',    5, (SELECT id FROM roles WHERE name = 'analyst')),
+    ('prototype',    4, (SELECT id FROM roles WHERE name = 'technical_analyst')),
+    ('quotation',    5, (SELECT id FROM roles WHERE name = 'technical_analyst')),
     ('negotiation',  6, (SELECT id FROM roles WHERE name = 'admin')),
     ('won',          7, (SELECT id FROM roles WHERE name = 'admin')),
     ('lost',         8, (SELECT id FROM roles WHERE name = 'admin'))

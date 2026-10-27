@@ -91,7 +91,7 @@ def lead_scope(user: dict, alias: str = "l"):
     role = user["role"]
     if role == "admin":
         return "TRUE", []
-    if role == "analyst":
+    if role == "technical_analyst":
         return (
             f"({alias}.assigned_to = %s OR {alias}.stage_id IN "
             "(SELECT id FROM pipeline_stages WHERE position >= "

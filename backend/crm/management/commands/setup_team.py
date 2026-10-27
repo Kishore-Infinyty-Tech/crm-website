@@ -12,12 +12,12 @@ INITIAL_PASSWORD = "Infinyty@2026"
 TEAM = [
     ("aayush@infinityanalyticsconsulting.com", "Aayush Mahendru", "admin"),
     ("aditi@infinityanalyticsconsulting.com", "Aditi Vad", "admin"),
-    ("kishore@infinityanalyticsconsulting.com", "Kishore Reddy R", "analyst"),
+    ("kishore@infinityanalyticsconsulting.com", "Kishore Reddy R", "technical_analyst"),
 ]
 
 
 class Command(BaseCommand):
-    help = "Delete every lead, client record and user, then create the CRM Administrators and CRM Analyst."
+    help = "Delete every lead, client record and user, then create the CRM Administrators and the Technical Analyst."
 
     def add_arguments(self, parser):
         parser.add_argument("--keep-data", action="store_true", help="Only add missing team members; delete nothing")

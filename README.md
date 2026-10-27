@@ -46,14 +46,14 @@ Open http://localhost:3000. The website forwards every `/api/...` request to the
 | --- | --- | --- |
 | Aayush Mahendru | aayush@infinityanalyticsconsulting.com | CRM Administrator |
 | Aditi Vad | aditi@infinityanalyticsconsulting.com | CRM Administrator |
-| Kishore Reddy R | kishore@infinityanalyticsconsulting.com | CRM Analyst |
+| Kishore Reddy R | kishore@infinityanalyticsconsulting.com | Technical Analyst |
 
 The first-time password is `INITIAL_PASSWORD` in `backend/crm/management/commands/setup_team.py` (or set `SETUP_PASSWORD` before running the command). Everyone should change it on their **Profile** page.
 
 ## What is built
 
 - **Leads**: list with search and filters, kanban board (drag a card to change stage), add, edit, duplicate check by phone and email, delete (CRM Administrators).
-- **Stage changes** write history, set closed dates, require a lost reason, and **hand the lead over** to the role that owns the new stage (new lead = CRM Executive, reaching out and qualified = CRM Administrator, prototype and quotation = CRM Analyst, negotiation = CRM Administrator). The new owner gets an email.
+- **Stage changes** write history, set closed dates, require a lost reason, and **hand the lead over** to the role that owns the new stage (new lead = Business Development, reaching out and qualified = CRM Administrator, prototype and quotation = Technical Analyst, negotiation = CRM Administrator). The new owner gets an email.
 - **Lead page**: contacts, call and message log, follow-ups, requirements (tech stack and features), prototype rounds with client feedback, meetings, files, stage history.
 - **Follow-ups**: per person, grouped overdue, today and upcoming. Reminder emails go out about 30 minutes before they are due.
 - **Calendar**: month view, one-off and repeating meetings ("every 2 days, 5 times"), attendees, emailed calendar invites (.ics).
@@ -114,7 +114,7 @@ Or run `python manage.py send_reminders` from any scheduler.
 
 ## Access rules
 
-| | CRM Administrator | CRM Analyst | CRM Executive |
+| | CRM Administrator | Technical Analyst | CRM Executive |
 | --- | --- | --- | --- |
 | Leads visible | All | Prototype stage onward, plus ones assigned to them | Ones they added or own |
 | Dashboard | Yes | No | No |

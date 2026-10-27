@@ -6,7 +6,7 @@ import { Sparkles } from "./fx/Sparkles";
 
 const FEATURES = [
   { icon: Layers, title: "One pipeline for the whole team", text: "Leads, follow-ups, requirements and prototype rounds, together.", tone: "from-indigo-500 to-cyan-glow" },
-  { icon: Repeat, title: "Handovers that run themselves", text: "Each stage goes to the CRM Executive, Administrator or Analyst who owns it.", tone: "from-gold-500 to-gold-300" },
+  { icon: Repeat, title: "Handovers that run themselves", text: "Each stage goes to its owner: Business Development, the CRM Administrator or the Technical Analyst.", tone: "from-gold-500 to-gold-300" },
   { icon: BellRing, title: "Reminders before it is late", text: "An email reaches you before every follow-up is due.", tone: "from-emerald-500 to-emerald-300" },
 ];
 

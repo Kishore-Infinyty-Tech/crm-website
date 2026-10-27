@@ -22,9 +22,9 @@ const FEATURES = [
 ];
 
 const FLOW = [
-  { role: "CRM Executives", text: "Import and add leads, tidy the details.", tone: "bg-slate-100 text-slate-700" },
+  { role: "Business Development", text: "Import and add leads, tidy the details.", tone: "bg-slate-100 text-slate-700" },
   { role: "CRM Administrators", text: "Call, qualify, follow up and negotiate.", tone: "bg-indigo-100 text-indigo-800" },
-  { role: "CRM Analyst", text: "Gather requirements, run prototype rounds and demos.", tone: "bg-gold-300/60 text-gold-600" },
+  { role: "Technical Analyst", text: "Gather requirements, run prototype rounds and demos.", tone: "bg-gold-300/60 text-gold-600" },
 ];
 
 export default function HomePage() {

@@ -51,7 +51,7 @@ def attachment_item(request, attachment_id):
     get_lead(user, row["lead_id"])
     storage = get_storage()
     if request.method == "DELETE":
-        if user["role"] == "executive" and row["uploaded_by"] != user["id"]:
+        if user["role"] == "business_development" and row["uploaded_by"] != user["id"]:
             raise ApiError("You can only delete files you uploaded", 403)
         storage.delete(row["storage_key"])
         execute("DELETE FROM attachments WHERE id = %s", [attachment_id])
